@@ -38,6 +38,9 @@ func main() {
 
 	database.DB.AutoMigrate(&models.Task{}, &models.User{})
 
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "Task API is live!"})
+	})
 	routes.TaskRoutes(router)
 	routes.AuthRoutes(router)
 
